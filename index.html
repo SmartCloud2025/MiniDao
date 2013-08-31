@@ -58,26 +58,28 @@
 <h3>
 <a name="%E6%8E%A5%E5%8F%A3%E5%AE%9A%E4%B9%89employeedaojava" class="anchor" href="#%E6%8E%A5%E5%8F%A3%E5%AE%9A%E4%B9%89employeedaojava"><span class="octicon octicon-link"></span></a>接口定义[EmployeeDao.java]</h3>
 
-<pre><code>public interface EmployeeDao {
-@Arguments("employee")
-public List&lt;Map&gt; getAllEmployees(Employee employee);
+<pre><code>@MiniDao
+public interface EmployeeDao {
+ @Arguments("employee")
+ public List&lt;Map&gt; getAllEmployees(Employee employee);
 
-@Arguments("empno")
-Employee getEmployee(String empno);
+ @Arguments("empno")
+ Employee getEmployee(String empno);
 
-@Arguments({"empno","name"})
-Map getMap(String empno,String name);
+ @Arguments({"empno","name"})
+ Map getMap(String empno,String name);
 
-@Sql("SELECT count(*) FROM employee")
-Integer getCount();
+ @Sql("SELECT count(*) FROM employee")
+ Integer getCount();
 
-@Arguments("employee")
-int update(Employee employee);
+ @Arguments("employee")
+ int update(Employee employee);
 
-@Arguments("employee")
-void insert(Employee employee);
-}
+ @Arguments("employee")
+ void insert(Employee employee);
 </code></pre>
+
+<p>}</p>
 
 <h3>
 <a name="sql%E6%96%87%E4%BB%B6employeedao_getallemployeessql" class="anchor" href="#sql%E6%96%87%E4%BB%B6employeedao_getallemployeessql"><span class="octicon octicon-link"></span></a>SQL文件[EmployeeDao_getAllEmployees.sql]</h3>
