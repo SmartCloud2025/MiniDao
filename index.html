@@ -36,7 +36,7 @@
 
 <p>MiniDao简介及特征</p>
 
-<p>MiniDao是Jeecg自己的持久化解决方案，集成了Hibernate实体维护和Mybaits SQL分离的两大优势。 具有以下特征:</p>
+<p>MiniDao是Jeecg自己的持久化解决方案，具备了Hibernate实体维护和Mybaits SQL分离的两大优势。 具有以下特征:</p>
 
 <ul>
 <li>1.O/R mapping不用设置xml，零配置便于维护</li>
@@ -84,14 +84,27 @@ void insert(Employee employee);
 
 <pre><code>SELECT * FROM employee where 1=1 
 &lt;#if employee.age ?exists&gt;
-and age = '${employee.age}'
+and age = :employee.age
 &lt;/#if&gt;
 &lt;#if employee.name ?exists&gt;
-and name = '${employee.name}'
+and name = :employee.name
 &lt;/#if&gt;
 &lt;#if employee.empno ?exists&gt;
-and empno = '${employee.empno}'
+and empno = :employee.empno
 &lt;/#if&gt;
+</code></pre>
+
+<h3>
+<a name="minidao%E6%8E%A5%E5%8F%A3%E9%85%8D%E7%BD%AE" class="anchor" href="#minidao%E6%8E%A5%E5%8F%A3%E9%85%8D%E7%BD%AE"><span class="octicon octicon-link"></span></a>MiniDao接口配置</h3>
+
+<pre><code>    &lt;!-- 注册MiniDao接口 --&gt;
+&lt;bean class="org.jeecgframework.minidao.factory.MiniDaoBeanFactory"&gt;
+    &lt;property name="packagesToScan"&gt;
+        &lt;list&gt;
+            &lt;value&gt;examples.dao.*&lt;/value&gt;
+        &lt;/list&gt;
+    &lt;/property&gt;
+&lt;/bean&gt;
 </code></pre>
 
 <h3>
